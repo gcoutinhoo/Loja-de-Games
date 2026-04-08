@@ -1,5 +1,5 @@
 import { IsNotEmpty } from "class-validator";
-import { Column, Entity, ManyToMany, PrimaryGeneratedColumn } from "typeorm";
+import { Column, Entity, ManyToOne, PrimaryGeneratedColumn } from "typeorm";
 import { Categoria } from "../../categoria/entities/categoria.entity";
 
 
@@ -24,10 +24,9 @@ export class Produto {
     @Column()
     quantidade!: number;
 
-  @ManyToMany(() => Categoria, (categoria) => categoria.produtos, {
+  @ManyToOne(() => Categoria, (categoria) => categoria.produtos, {
     onDelete: 'CASCADE'
   })
   categoria!: Categoria;
-    
 
 }
