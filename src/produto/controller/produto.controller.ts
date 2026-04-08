@@ -31,9 +31,9 @@ export class ProdutoController{
     return this.produtoService.create(produto);
     }
 
-    @Put()
+    @Put('/:id')
     @HttpCode(HttpStatus.OK) // http://localhost:4000/produto/1
-    update(@Body() produto : Produto): Promise<Produto>{
+    update(@Param("id") id: number,@Body() produto : Produto): Promise<Produto>{
     return this.produtoService.update(produto);
     }
     
